@@ -4,6 +4,7 @@ import requests
 
 app = Flask(__name__)
 CORS(app)
+# I know this is dangerous to discover this api key, here is for test easily.
 API_KEY = '5acbac2a26b67b9b119b2a85ea0242f3'
 
 
