@@ -20,11 +20,16 @@
                 }
             })
                 .then(function (response) {
-                    document.getElementById('weatherResult').innerHTML = JSON.stringify(response.data, null, 2);
+                    d = response.data
+                    document.getElementById('temperature').innerHTML = d['main']['temp']
+                    document.getElementById('feel_like').innerHTML = d['main']['feels_like']
+                    document.getElementById('desc').innerHTML = d['weather'][0]['description']
                 })
                 .catch(function (error) {
-                    console.log(error);
-                    document.getElementById('weatherResult').innerHTML = 'Failed to fetch weather data';
+                    document.getElementById('error_span').innerHTML = 'Failed to fetch weather data!!!';
+                    document.getElementById('temperature').innerHTML = ''
+                    document.getElementById('feel_like').innerHTML = ''
+                    document.getElementById('desc').innerHTML = ''
                 });
         }
     </script>
@@ -43,7 +48,20 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <pre id="weatherResult"></pre>
+    <div>
+        <span id="error_span" style="color: red"></span></div>
+    <div>
+        <label>Temperature: </label>
+        <span id="temperature"></span>
+    </div>
+    <div>
+        <label>Feels Like: </label>
+        <span id="feel_like"></span>
+    </div>
+    <div>
+        <label>Description: </label>
+        <span id="desc"></span>
+    </div>
 </div>
 </body>
 </html>
